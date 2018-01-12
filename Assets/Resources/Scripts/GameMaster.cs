@@ -7,9 +7,12 @@ public class GameMaster : MonoBehaviour {
     [SerializeField]
     private int MAX_PINS = 30;
     GameObject pin;
+    static public int score = 0;
+    static public int balls = 10;
+    public GUISkin scoreSkin;
 
     // Use this for initialization
-    void Start () {
+    void StartOld () {
         pin = (GameObject)Resources.Load("Prefab/pin");
         int count = 0;
         for (int i = 0; i < MAX_PINS; ++i)
@@ -27,6 +30,12 @@ public class GameMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
+
+    void OnGUI() {
+        GUI.skin = scoreSkin;
+        GUI.Label(new Rect(Screen.width / 2 - 150, 20, 300, 100), "Score: " + score);
+        GUI.Label(new Rect(Screen.width / 2 + 100, 20, 300, 100), "Balls: " + balls);
+    }
 }
