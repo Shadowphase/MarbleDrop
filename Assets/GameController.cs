@@ -29,7 +29,10 @@ public class GameController : MonoBehaviour {
 
     void spawnBall()
     {
-        GameObject ballInst = Instantiate(ball, transform.position, Quaternion.identity);
-        ballInst.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (launchForce + Random.value * 50));
+        if (GameMaster.balls > 0) {
+            --GameMaster.balls;
+            GameObject ballInst = Instantiate(ball, transform.position, Quaternion.identity);
+            ballInst.GetComponent<Rigidbody2D>().AddForce(Vector2.up * (launchForce + Random.value * 50));
+        }
     }
 }
